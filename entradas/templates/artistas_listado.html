@@ -1,0 +1,38 @@
+{% extends "bandasform.html" %}
+{% block content %}
+<h1>Listado de bandas sugeridas</h1>
+ <div class="tablita">
+ <table>
+  <th>Nombre</th>
+  <th>Pais de Origen</th>
+  <th>Discos</th>
+  <th>Fundacion</th>
+  <th>Genero</th>
+  <th>Opciones</th>
+
+  {% for a in arti %}
+
+  <tr>
+    <td>{{a.nombre}}</td>
+    <td>{{a.nacionalidad}}</td>
+    <td>{{a.discos}}</td>
+    <td>{{a.fundacion}}</td>
+    <td>{{a.gen}}</td>
+    <td>
+      <a href="{% url 'eliminar' a.id %}">Eliminar</a>
+      <a href="{% url 'modificar' a.id %}">Modificar</a>
+    </td>
+
+  </tr>
+  {% endfor %}
+</table>
+ 
+{% if messages %}
+  {% for m in messages %}
+  <div>{{ m }}</div>
+  {% endfor %}
+{% endif %}
+ 
+ </div>
+
+  {% endblock %}

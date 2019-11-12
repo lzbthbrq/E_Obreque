@@ -1,0 +1,59 @@
+{% extends "bandasform.html" %}
+
+<style>
+h1{
+  color: white;
+}
+</style>
+
+<div class="tablita">
+  {% block content%}
+<h2>Modificar Datos</h2>
+  <form id="artistaformulario" method="POST">
+    {% csrf_token %}
+
+    <input type="hidden" name="txtid" id="txtid" value="{{arti.id}}">
+
+    <div class="content">
+
+      <label for="nombre">Nombre </label>
+      <input type="text" name="txtnombre" value="{{arti.nombre}}">
+      <br>
+      <label for="nacionalidad">Pais de origen</label>
+      <input type="text" name="txtnacionalidad" value="{{arti.nacionalidad}}">
+      <br>
+      <label for="cds">N Discos </label>
+      <input type="number" name="txtcds" value="{{arti.discos}}" >
+      <br>
+      <label for="inicio">Año Conformacion </label>
+      <input type="date"  name="dtinicio" value="{{arti.fundacion.date}}">
+      <br>
+      <label for="integra">Integrantes</label>
+      <input type="number" name="txtintegra" value="{{arti.n_integrantes}}">
+      <br>
+      <label for="integra">Genero</label>
+      <select name="cbogen" id="cbogen">
+
+        {% for g in gene %}
+        <option
+        {% if g.id == arti.gen.id %}
+        {{'selected'}}
+        {% endif %}
+        
+        value="{{ g.id }}">{{g.nomg}}</option>
+        {% endfor %}
+
+      </select><br><br>
+      <input type="submit" name="btnguardar" value="Modificar">
+    </div>
+
+  </form>
+  <h2>{{mensaje}}</h2>
+
+
+
+
+
+
+
+  {% endblock %}

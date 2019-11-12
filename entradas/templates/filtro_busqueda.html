@@ -1,0 +1,18 @@
+
+
+{% block content%}
+ <h2>Lista de Artistas</h2>
+
+    <ul>
+    {% for a in artis %}
+    	<li>{{a.nombre}}, {{a.gen}}, {{a.nacionalidad}}</li>
+    {% endfor %}
+    </ul>
+
+    <form action="" method="POST">
+        Busca la banda: 
+        <input type="text" name="nombre" value="{{nomb}}"  >
+        <input type="submit" value="Filtrar"> 
+        {% csrf_token %}
+    </form>
+{% endblock %}

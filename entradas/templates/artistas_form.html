@@ -1,0 +1,56 @@
+{% extends "bandasform.html" %}
+
+<style>
+h1{
+  color: white;
+}
+</style>
+
+<div class="tablita">
+  {% block content%}
+
+  <form id="artistaformulario" method="POST">
+    {% csrf_token %}
+
+    <h2>Bienvenido Okid</h2>
+
+    <div class="content">
+
+      <label for="nombre">Nombre </label>
+      <input type="text" name="txtnombre" placeholder="Ingrese nombre" required>
+      <br>
+      <label for="nacionalidad">Pais de origen</label>
+      <input type="text" name="txtnacionalidad" placeholder="Ingresa pais">
+      <br>
+      <label for="cds">N Discos </label>
+      <input type="number" name="txtcds" placeholder="Ingrese discos" >
+      <br>
+      <label for="inicio">Año Conformacion </label>
+      <input type="date"  name="dtinicio">
+      <br>
+      <label for="integra">Integrantes</label>
+      <input type="number" name="txtintegra" placeholder="Ingresa numero">
+      <br>
+      <label for="integra">Genero</label>
+      <select type="text" name="cbogen" id="cbogen">
+
+        <option value="">Selecione genero</option>
+
+        {% for g in genero %}
+        <option value="{{ g.id }}">{{g.nomg}}</option>
+        {% endfor %}
+
+      </select><br><br>
+      <input type="submit" name="btnguardar" value="Sugerir">
+    </div>
+
+  </form>
+  <h2>{{mensaje}}</h2>
+
+
+
+
+
+
+
+  {% endblock %}
