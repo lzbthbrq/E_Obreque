@@ -54,3 +54,10 @@ function close() {
 
 buttons.forEach(button => button.addEventListener('click', open));
 overlay.addEventListener('click', close);
+
+//scroll down lista
+
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();

@@ -5,14 +5,27 @@
 
     <ul>
     {% for a in artis %}
-    	<li>{{a.nombre}}, {{a.gen}}, {{a.nacionalidad}}</li>
+        <li>{{a.nombre}}, {{a.gen}}, {{a.nacionalidad}}</li>
+    {% empty %}
+    <h1>No se encuentra lo que buscas</h1>
     {% endfor %}
     </ul>
 
     <form action="" method="POST">
         Busca la banda: 
-        <input type="text" name="nombre" value="{{nomb}}"  >
+        <input type="text" name="nomb" value="{{nomb}}"  >
         <input type="submit" value="Filtrar"> 
+
+           busca por genero
+        <input type="text" name="gen" value="{{gen}}"  >
+        <input type="submit" value="Filtrar"> 
+
+
+
+
         {% csrf_token %}
     </form>
+
+
+
 {% endblock %}

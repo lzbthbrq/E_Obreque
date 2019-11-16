@@ -1,30 +1,72 @@
-{% extends "bandasform.html" %}
+{% extends "bandasform.html"%}
+
 {% block content %}
-<h1>Listado de bandas sugeridas</h1>
- <div class="tablita">
- <table>
-  <th>Nombre</th>
-  <th>Pais de Origen</th>
-  <th>Discos</th>
-  <th>Fundacion</th>
-  <th>Genero</th>
-  <th>Opciones</th>
 
-  {% for a in arti %}
+<section class="tablita">
+  <!--for demo wrap-->
+  <h1>Listado de bandas sugeridas</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <th>Nombre</th>
+      <th>Pais de Origen</th>
+      <th>Discos</th>
+      <th>Fundacion</th>
+      <th>Genero</th>
+      <th>Opciones</th>
+    </table>
+  </div>
 
-  <tr>
-    <td>{{a.nombre}}</td>
-    <td>{{a.nacionalidad}}</td>
-    <td>{{a.discos}}</td>
-    <td>{{a.fundacion}}</td>
-    <td>{{a.gen}}</td>
-    <td>
-      <a href="{% url 'eliminar' a.id %}">Eliminar</a>
-      <a href="{% url 'modificar' a.id %}">Modificar</a>
-    </td>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+          {% for a in arti %}
 
-  </tr>
-  {% endfor %}
+          <tr>
+            <td>{{a.nombre}}</td>
+            <td>{{a.nacionalidad}}</td>
+            <td>{{a.discos}}</td>
+            <td>{{a.fundacion}}</td>
+            <td>{{a.gen}}</td>
+            <td>
+              <a href="{% url 'eliminar' a.id %}">Eliminar</a>
+              <a href="{% url 'modificar' a.id %}">Modificar</a>
+            </td>
+        
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </table>
  
 {% if messages %}

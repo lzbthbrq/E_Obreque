@@ -95,15 +95,18 @@ def modificar(request,id):
             messages.success(request, 'Modificado Correctamente')
         except:
             messages.error(request, 'No se ha modificado')
-        return redirect('artistas_listado')
 
     return render(request, 'modificar.html', var)
+
 
 def filtro_busqueda(request):
     artis= Artistas.objects.all()
 
     if request.POST.get('nomb'):
-        nomb = request.POST.get('nombre')
-        artis = Artistas.filter(nombre__exact=nomb)
+        nomb = request.POST.get('nomb')
+        artis = artis.filter(nombre__contains=nomb)
+    elif request.POST.get('gen'):
+        gen = request.POST.get('gen')
+        artis = artis.filter(gen__nomg__icontains=gen)
 
-    return render(request, 'filtro_busqueda.html', {'artis': artis})
+    return render(request, 'filtro_busqueda.html', {'artis': artis} )
