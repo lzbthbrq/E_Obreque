@@ -1,7 +1,6 @@
 from django.db import models
-from django.urls import reverse #se utiliza para la clase instancia de libros... son modulos que necesita django
+from django.urls import reverse 
 import uuid 
-# Create your models here.
 
 class Suscriptor(models.Model):
     nickname = models.CharField(max_length=200)

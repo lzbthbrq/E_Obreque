@@ -1,17 +1,9 @@
-
-
+{% extends "bandasform.html"%}
 {% block content%}
- <h2>Lista de Artistas</h2>
+  <!--for demo wrap-->
+  <h1>Listado de bandas sugeridas</h1>
 
-    <ul>
-    {% for a in artis %}
-        <li>{{a.nombre}}, {{a.gen}}, {{a.nacionalidad}}</li>
-    {% empty %}
-    <h1>No se encuentra lo que buscas</h1>
-    {% endfor %}
-    </ul>
-
-    <form action="" method="POST">
+  <form action="" method="POST">
         Busca la banda: 
         <input type="text" name="nomb" value="{{nomb}}"  >
         <input type="submit" value="Filtrar"> 
@@ -19,12 +11,46 @@
            busca por genero
         <input type="text" name="gen" value="{{gen}}"  >
         <input type="submit" value="Filtrar"> 
-
-
-
+        {% load static%}
+        <a href="{% url 'artistas_form'%}">------------>Agrega tu sugerencia aqui</a>
 
         {% csrf_token %}
-    </form>
+  </form>
+    <br>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <th>Nombre</th>
+      <th>Pais de Origen</th>
+      <th>Discos</th>
+      <th>Integrantes</th>
+      <th>Genero</th>
+      <th>Fundacion</th>
+      <th>Opciones</th>
+    </table>
+  </div>
+
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+    {% for a in artis %}
+    <tr>
+    <td>{{a.nombre}}</td>
+    <td>{{a.nacionalidad}}</td>
+    <td>{{a.discos}}</td>
+    <td>{{a.n_integrantes}}</td>
+    <td>{{a.gen}}</td>
+    <td>{{a.fundacion}}</td>
+    <td>
+    <a href="{% url 'eliminar' a.id %}">Eliminar</a>
+    <br>
+    <a href="{% url 'modificar' a.id %}">Modificar</a>
+    </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+</section>
 
 
 

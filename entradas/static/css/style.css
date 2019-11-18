@@ -170,30 +170,6 @@ section#noti {
 
 * {box-sizing:border-box}
 
-/* Slideshow container */
-.slideshow-container {
-  position: relative;
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
 
 /*conciertos*/
 @import url("https://fonts.googleapis.com/css?family=Inconsolata|Merriweather");
@@ -337,5 +313,161 @@ button#bus {
   margin-left: -20%;
   width: 100%;
 }
+/*NOTICIAS*/
+.accordion {
+  width: 100%;
+  max-width: 1080px;
+  height: 250px;
+  overflow: hidden;
+  margin: 50px auto;
+  padding: 1%;
+  top: 10%;
+}
+.accordion ul {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin: 0;
+  padding: 0;
+}
+.accordion ul li {
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative;
+  width: 16.666%;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: all 500ms ease;
+}
+.accordion ul li div {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+.accordion ul li div a {
+  display: block;
+  height: 250px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  vertical-align: bottom;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  color: #fff;
+  text-decoration: none;
+  font-family: Open Sans, sans-serif;
+  transition: all 200ms ease;
+}
+.accordion ul li div a * {
+  opacity: 0;
+  margin: 0;
+  width: 100%;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 5;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-transform: translateX(-20px);
+  transform: translateX(-20px);
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+.accordion ul li div a h2 {
+  font-family: Montserrat,sans-serif;
+  text-overflow: clip;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  top: 160px;
+}
+.accordion ul li div a p {
+  top: 160px;
+  font-size: 13.5px;
+}
+.accordion ul li:nth-child(1) {
+  background-image: url("https://i.pinimg.com/originals/76/82/7b/76827bfc64bdca222ba646061eaf4d85.jpg");
+}
+.accordion ul li:nth-child(2) {
+  background-image: url("https://lizstrausscom.files.wordpress.com/2019/03/palace_approved_3__large.jpg");
+}
+.accordion ul li:nth-child(3) {
+  background-image: url("https://66.media.tumblr.com/4f89789945ab8e6d0f4b9273bf44a4bf/tumblr_o3ixduUJai1qk495mo3_1280.jpg");
+}
+.accordion ul li:nth-child(4) {
+  background-image: url("https://static.ffx.io/images/$width_800%2C$height_450/t_crop_fill/q_86%2Cf_auto/f22b6cf96331a672ab6bf23355821875b4acfd36");
+}
+.accordion ul li:nth-child(5) {
+  background-image: url("https://66.media.tumblr.com/473664c04b391723f313b0dba6d4912e/tumblr_mt1buchVCt1qd5zh5o1_1280.jpg");
+}
+.accordion ul li:nth-child(6) {
+  background-image: url("https://66.media.tumblr.com/5c3356d7a2fcb065906aa78611fd80eb/tumblr_oih0msP3cm1vhy4l2o9_640.jpg");
+}
+.accordion ul:hover li, .accordion ul:focus-within li {
+  width: 8%;
+}
+.accordion ul li:focus {
+  outline: none;
+}
+.accordion ul:hover li:hover,
+.accordion ul li:focus, .accordion ul:focus-within li:focus {
+  width: 60%;
+}
+.accordion ul:hover li:hover a,
+.accordion ul li:focus a, .accordion ul:focus-within li:focus a {
+  background: rgba(0, 0, 0, 0.4);
+}
+.accordion ul:hover li:hover a *,
+.accordion ul li:focus a *, .accordion ul:focus-within li:focus a * {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.accordion ul:hover li {
+  width: 8% !important;
+}
+.accordion ul:hover li a * {
+  opacity: 0 !important;
+}
+.accordion ul:hover li:hover {
+  width: 60% !important;
+}
+.accordion ul:hover li:hover a {
+  background: rgba(0, 0, 0, 0.4);
+}
+.accordion ul:hover li:hover a * {
+  opacity: 1 !important;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
 
+@media screen and (max-width: 600px) {
+  body {
+    margin: 0;
+  }
 
+  .accordion {
+    height: auto;
+  }
+  .accordion ul li, .accordion ul li:hover, .accordion ul:hover li, .accordion ul:hover li:hover {
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+.about {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+.about a {
+  color: blue;
+  text-decoration: none;
+}
+.about a:hover {
+  text-decoration: underline;
+}

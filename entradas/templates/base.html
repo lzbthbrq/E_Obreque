@@ -6,6 +6,7 @@
 {% block title %}<title>Bienvenido okid</title>{% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -17,9 +18,9 @@
     <ul >
       <li><a  href="{% url 'index' %}">Inicio</a></li>
       <li><a href="{% url 'conci' %}">Conciertos</a></li>
-      <li><a href="{% url 'bandasform' %}">Nueva Musica</a></li>
+      <li><a href="{% url 'filtro_busqueda' %}">Nueva Musica</a></li>
       <li><a href="{% url 'noti' %}">Noticias</a></li>
-      <li><a href="#comu">Comunidad</a></li>
+     <!-- <li><a href="#comu">Comunidad</a></li>  tercera unidad--> 
     </ul>
     </nav>
     {% block contenido %}

@@ -2,35 +2,93 @@
 {% load static %}
 
   {% block contenido %}
-  <section id="noti">
-        <!-- Slideshow container -->
-    <div class="slideshow-container">
-    
-      <!-- Full-width images with number and caption text -->
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img src="{% static 'img/diiv3.png'%}" style="width: 100%;">
-        <div class="text">Diiv se separa?</div>
-      </div>
-    
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img src="{% static 'img/small.png' %}" style="width: 100%;">
-        <div class="text">Gordon hospitalizado por enfermedad cardiaca</div>
-      </div>
-    
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img src="{% static 'img/alt1.png' %}" style="width: 100%;" >
-        <div class="text">Caption Three</div>
-      </div>
-    
-      <div class="mySlides fade">
-        <div class="numbertext">4 / 3</div>
-        <img src="{% static 'img/cage1.png' %}" style="width: 100%;">
-        <div class="text">Caption Three</div>
-      </div>
-    </div>
-    </section>
+  <style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+h1 {
+  text-align: center;
+  font-family: Montserrat,sans-serif;
+  color: #333;
+}
+body{
+  background-color: #c8dad3;
+}
+.tablita{
+  position: absolute;
+  top: 6%;
+  height: 100;
+  width: 96%;
+  padding: 3.9%;
+}
+  </style>
+  <div class="tablita">
 
+      <h1>Seccion de noticias</h1>
+      <div class="accordion">
+        <ul>
+          <li tabindex="1">
+            <div>
+              <a href="#oculto" onclick="mostrar('cont1')">
+                <h2>Nueva cancion de Agnes</h2>
+                <p>Island of doom, cancion que promete</p>
+              </a>
+            </div>
+          </li>
+          <li tabindex="2">
+            <div>
+              <a href="#">
+                <h2>Descubre a la nueva banda promesa</h2>
+                <p>The Kick it, el nuevo descubrimiento de cody smith</p>
+              </a>
+            </div>
+          </li>
+          <li tabindex="3">
+            <div>
+              <a href="#">
+                <h2>Concierto intimo!</h2>
+                <p>Zach (cole smith) decidio sorprender a los fans con un concierto de numero reducido</p>
+              </a>
+            </div>
+          </li>
+          <li tabindex="4">
+            <div>
+              <a href="#">
+                <h2>La reconciliación de dos potencias</h2>
+                <p>Sticky Fingers vuelve con fuerza luego de la pelea de intereses</p>
+              </a>
+            </div>
+          </li>
+          <li tabindex="5">
+            <div>
+              <a href="#">
+                <h2>Rareza de pareja</h2>
+                <p>Sky Ferreira y cole? what!? como? te lo contamos todo...</p>
+              </a>
+            </div>
+          </li>
+          <li tabindex="6">
+            <div>
+              <a href="#">
+                <h2>mas de 1000 asistentes!</h2>
+                <p>Tash Sultana se luce en su concierto realizado en chile...</p>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <br><br><br><br><br><br><br><br><br>
+
+      <div  class="oculto" id="oculto">
+        <h2>
+          Island of doom, el nuevo sencillo de Agnes Obel a recibido buenas criticas del medio
+        por nuevas participaciones liricas.
+        <br>
+        Es sabido que tiene mucho talento y es por eso que no deja de sorprender con cada cancion
+        si quieres escucharla pincha <a href="https://www.youtube.com/watch?v=R0-HVFEjOlE">AQUI</a></div>
+        </h2>
+        
+      
+  </div>
+
+ 
   {% endblock  %}

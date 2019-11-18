@@ -68,14 +68,14 @@ def eliminar(request,id):
         mensaje = "No se ha podido eliminar Correctamente"
         messages.success(request, mensaje)
 
-    return redirect('artistas_listado')
-
+    return redirect('filtro_busqueda')
+  
 def modificar(request,id):
     arti = Artistas.objects.get(id=id)
-    gene = Genero.objects.all()
+    genero = Genero.objects.all()
     var ={
         'arti':arti,
-        'gene': gene
+        'genero': genero
     }
 
     if request.POST:

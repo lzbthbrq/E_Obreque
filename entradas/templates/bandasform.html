@@ -2,7 +2,7 @@
 {% block contenido %}
 <style>
 h1{
-  font-size: 15px;
+  font-size: 0.8cm;
   color: rgb(86, 103, 148);
   text-transform: uppercase;
   font-weight: 200;
@@ -46,45 +46,23 @@ td{
     position: relative;
   }
 
-.contenidillo{
-  position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.lista{
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    color: rgb(34, 68, 88);
-}
 
 .tablita{
   position: absolute;
-  top: 20%;
+  top: 6%;
   height: 100;
   width: 96%;
   padding: 3.9%;
 }
-
+a{
+  text-decoration:none;
+}
 </style>
 
 <div id="contenedor">
     {% load static %}
     <img src="{% static 'img/header.jpg' %}"  height="640px" width="100%">
-    <div class="contenidillo">
-        <h1>Sugiere tus bandas aqui \/</h1>
-        
-    </div>
 
-    <div class="lista">
-        <ul >
-            <li><a  href="{% url 'artistas_listado' %}">Lista de bandas Suscritas</a></li>
-            <li><a href="{% url 'artistas_form' %}">Sugerir Artistas</a></li>
-            <li><a href="{% url 'filtro_busqueda' %}">Eliminar Artistas</a></li>
-    
-          </ul>
-    </div>
 
     <div class="tablita">
       {% block content%}
