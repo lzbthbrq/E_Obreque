@@ -1,0 +1,15 @@
+{% extends "bandasform.html" %}
+{% block content %}
+<center>
+  <h2>Registrate y se un Okid!</h2>  
+  <br>
+  <form action="" method="POST">
+      {% csrf_token%}
+      <table>
+          {{form.as_table}}
+      </table>
+      <input type="submit" value="Soy un Okid" class="btn btn-success float-center">
+  </form>
+</center>
+
+{% endblock %}

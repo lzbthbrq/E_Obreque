@@ -1,0 +1,23 @@
+{% extends "bandasform.html" %}
+
+{% block content %}
+
+
+<center>
+<h3>Bienvenido a la comunidad!</h3>
+<h6><a href="{% url 'registrar' %}">Registrarme!</a></h6>
+<br>
+    {% load crispy_forms_tags %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Login" class="btn btn-success">
+</form>
+<p><a href="{% url 'password_reset' %}">Recuperar mi contraseña?</a></p>
+
+</center>
+
+{% endblock %}

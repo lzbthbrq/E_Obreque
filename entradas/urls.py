@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import index,concier,noti,bandasform, artistas_listado,eliminar,artistas_form,modificar,filtro_busqueda
+from .views import index,concier,noti,bandasform, artistas_listado,eliminar,artistas_form,modificar,filtro_busqueda,registrar
 from . import views
  
 urlpatterns = [ 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('artistas_form', artistas_form, name='artistas_form'),
     path('modificar/<id>',modificar, name='modificar'),
     path('Filtrar',filtro_busqueda, name='filtro_busqueda'),
+    path('registro',registrar,name='registrar',)
 ] 

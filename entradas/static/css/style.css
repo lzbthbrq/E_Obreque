@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
 body {
   font-family: 'work Sans', sans-serif;
   color: #333;
@@ -146,25 +147,6 @@ section#noti {
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
   opacity: 0;
-}
-.popup {
-  margin: 70px auto;
-  padding: 40px;
-  background: url("https://i.pinimg.com/564x/99/e1/d3/99e1d308241ac15346aaf8aeb4833e1d.jpg");
-  border-radius: 5px;
-  width: 30%;
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-
-.popup .content {
-  max-height: 50%;
-  overflow: auto;
-  position: center;
 }
 
 
@@ -471,3 +453,4 @@ button#bus {
 .about a:hover {
   text-decoration: underline;
 }
+

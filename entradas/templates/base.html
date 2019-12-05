@@ -2,14 +2,50 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-    
-{% block title %}<title>Bienvenido okid</title>{% endblock %}
+ {% load static %}   
+
+{% block title %}
+<title>Bienvenido okid</title>
+{% endblock %}
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-  {% load static %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+
+  <style>
+    
+.ddown {
+  position: relative;
+  display: inline-block;
+}
+
+.dp-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(179, 195, 197, 0.9);
+  min-width: 160px;
+  margin-top: 0.6cm;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dp-content a {
+  color: rgb(0, 0, 0);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dp-content a:hover {background-color:   rgba(179, 195, 197, 0.9);#f1f1f1}
+
+.ddown:hover .dp-content {
+  display: block;
+}
+</style>
+
 </head>
 
 <body>
@@ -20,7 +56,20 @@
       <li><a href="{% url 'conci' %}">Conciertos</a></li>
       <li><a href="{% url 'filtro_busqueda' %}">Nueva Musica</a></li>
       <li><a href="{% url 'noti' %}">Noticias</a></li>
-     <!-- <li><a href="#comu">Comunidad</a></li>  tercera unidad--> 
+      {% if user.is_authenticated %}
+      
+      <div class="ddown">
+          <li><a href="">Bienvenido {{user.username}}</a></li>
+          <div class="dp-content">
+                <a href="{% url 'logout' %}">cerrar sesion</a>
+                <a href="{% url 'password_reset' %}">Cambiar contraseña</a>
+          </div>
+        </div>
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      {%endif%}
+
+
     </ul>
     </nav>
     {% block contenido %}

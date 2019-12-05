@@ -1,10 +1,12 @@
-from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import Artistas,Genero,Tickets,Conciertos,Suscriptor
 from django.contrib import messages
-# Create your views here.
+from django.contrib.auth.decorators import permission_required
+from .forms import ArtistasForm,CustomUserForm
+from django.contrib.auth import login,authenticate
+
 def index(request):
     return render(request,'index.html',)
 
@@ -20,83 +22,53 @@ def bandasform(request):
         'bandasform.html',
         )
 
+@permission_required('entradas.add_artistas')
 def artistas_form(request):
-    arti = Artistas.objects.all()
-    genero= Genero.objects.all()
-    var = {
-        'arti': arti,
-        'genero':genero
+    data = {
+        'form':ArtistasForm()
     }
 
-    if request.POST:
-        arti = Artistas()
-        arti.nombre = request.POST.get('txtnombre')
-        arti.nacionalidad = request.POST.get('txtnacionalidad')
-        arti.discos = request.POST.get('txtcds')
-        arti.fundacion = request.POST.get('dtinicio')
-        arti.n_integrantes = request.POST.get('txtintegra')
-        gene = Genero()
-        gene.id = request.POST.get('cbogen')
-        arti.gen = gene
-
-        try:
-            arti.save()
-            var['mensaje'] = 'Guardado Correctamente'
-        except:
-            var['mensaje'] = 'No se ha podido guardar'
-
+    if request.method == 'POST':  #se valida si hay datos
+        formulario = ArtistasForm(request.POST) # se crea el formulario
+        if formulario.is_valid():  # Se valida si el formulario es de tipo post
+            formulario.save() # Se guarda en la bd
+            data['mensaje'] = "GUARDADO CORRECTAMENTE!" 
+        data['forms'] = formulario
     return render(
-        request, 'artistas_form.html',var
+        request, 'artistas_form.html',data # se devuelve a la pagina
     )
 
 def artistas_listado(request):
     arti = Artistas.objects.all()
+    data ={
+        'arti':arti
+    }
 
     return render(
         request,
-        'artistas_listado.html', {'arti':arti}
+        'filtro_busqueda.html', data
         )
 
 def eliminar(request,id):
     arti=Artistas.objects.get(id=id)
+    arti.delete()
 
-    try:
-        arti.delete()
-        mensaje="Eliminado Correctamente"
-        messages.success(request, mensaje)
-    except:
-        mensaje = "No se ha podido eliminar Correctamente"
-        messages.success(request, mensaje)
-
-    return redirect('filtro_busqueda')
+    return redirect(to='filtro_busqueda')
   
 def modificar(request,id):
-    arti = Artistas.objects.get(id=id)
-    genero = Genero.objects.all()
-    var ={
-        'arti':arti,
-        'genero': genero
+    arti = Artistas.objects.get(id=id) #recibe por aprametro la columna que vamos a buscar
+    data ={
+        'form': ArtistasForm(instance=arti)
     }
-
-    if request.POST:
-        arti = Artistas()
-        arti.id = request.POST.get('txtid')
-        arti.nombre = request.POST.get('txtnombre')
-        arti.nacionalidad = request.POST.get('txtnacionalidad')
-        arti.discos = request.POST.get('txtcds')
-        arti.fundacion = request.POST.get('dtinicio')
-        arti.n_integrantes = request.POST.get('txtintegra')
-        gene = Genero()
-        gene.id = request.POST.get('cbogen')
-        arti.gene = gene
-
-        try:
-            arti.save()
-            messages.success(request, 'Modificado Correctamente')
-        except:
-            messages.error(request, 'No se ha modificado')
-
-    return render(request, 'modificar.html', var)
+    if request.method =='POST':
+        formulario = ArtistasForm(data=request.POST, instance=arti)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "MODIFICADO CORRECTAMENTE"
+            data['form'] = formulario #se sobre escribe a variable guardando los nuevos datos
+        data['forms'] = formulario
+        
+    return render(request, 'modificar.html', data)
 
 
 def filtro_busqueda(request):
@@ -110,3 +82,19 @@ def filtro_busqueda(request):
         artis = artis.filter(gen__nomg__icontains=gen)
 
     return render(request, 'filtro_busqueda.html', {'artis': artis} )
+
+def registrar(request):
+    data ={
+       'form':CustomUserForm() 
+    }
+    if request.method == "POST":
+        formulario = CustomUserForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            username = formulario.cleaned_data['username']
+            password = formulario.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect(to='index')
+    
+    return render(request, 'registration/registrar.html', data)
